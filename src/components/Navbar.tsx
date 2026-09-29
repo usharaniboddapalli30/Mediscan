@@ -11,6 +11,7 @@ import {
   CheckCircle,
   UserCheck,
   ChevronDown,
+  Sparkles,
 } from 'lucide-react';
 import { SupportedLanguage, translations } from '../i18n/translations';
 import { ExpiryAlertNotification, Reminder, FakeMedicineAlert } from '../types';
@@ -25,6 +26,7 @@ interface NavbarProps {
   onLogout: () => void;
   onOpenScanner: () => void;
   onOpenCabinet?: () => void;
+  onOpenAiAssistant?: () => void;
   safetyAlertsCount?: number;
   expiryNotifications?: ExpiryAlertNotification[];
   reminders?: Reminder[];
@@ -46,6 +48,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   onLogout,
   onOpenScanner,
   onOpenCabinet,
+  onOpenAiAssistant,
   safetyAlertsCount = 0,
   expiryNotifications = [],
   reminders = [],
@@ -102,6 +105,18 @@ export const Navbar: React.FC<NavbarProps> = ({
           <QrCode className="w-4 h-4" />
           <span className="hidden xs:inline sm:inline">{t.scanMedicine}</span>
         </button>
+
+        {/* AI Assistant Button (Trained on Website Data) */}
+        {onOpenAiAssistant && (
+          <button
+            onClick={onOpenAiAssistant}
+            className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-xl bg-purple-600/10 hover:bg-purple-600/20 text-purple-600 dark:text-purple-400 border border-purple-500/30 text-xs font-bold transition-all active:scale-95 cursor-pointer shrink-0"
+            title="Ask MediScan AI Clinical Assistant (Trained on Website Data)"
+          >
+            <Sparkles className="w-4 h-4 text-purple-600 dark:text-purple-400" />
+            <span className="hidden sm:inline">AI Agent</span>
+          </button>
+        )}
 
         {/* Notifications & Dose Reminder Bell */}
         <div className="relative">

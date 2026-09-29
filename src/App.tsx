@@ -346,6 +346,7 @@ export default function App() {
           onLogout={handleLogout}
           onOpenScanner={() => setIsScannerOpen(true)}
           onOpenCabinet={() => setIsCabinetOpen(true)}
+          onOpenAiAssistant={() => setIsAiModalOpen(true)}
           safetyAlertsCount={safetyAlerts.length}
           expiryNotifications={expiryNotifications}
           reminders={reminders}
@@ -528,7 +529,7 @@ export default function App() {
         currentLang={currentLang}
       />
 
-      {/* 5. AI Assistant Modal */}
+      {/* 5. AI Assistant Modal (Trained on all website data) */}
       <AiAssistantModal
         isOpen={isAiModalOpen}
         onClose={() => {
@@ -538,6 +539,13 @@ export default function App() {
         initialQuery={aiQuery}
         isDark={isDark}
         currentLang={currentLang}
+        medicines={medicines}
+        familyMembers={familyMembers}
+        reminders={reminders}
+        scanHistory={scanHistory}
+        fakeAlerts={fakeAlerts}
+        safetyAlerts={safetyAlerts}
+        user={user}
       />
     </div>
   );

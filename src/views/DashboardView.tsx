@@ -290,11 +290,14 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
               <Sparkles className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="font-bold text-sm text-slate-900 dark:text-slate-100">
-                {t.aiAssistant}
+              <h3 className="font-bold text-sm text-slate-900 dark:text-slate-100 flex items-center gap-1.5">
+                <span>{t.aiAssistant}</span>
+                <span className="px-1.5 py-0.2 rounded-full text-[9px] font-bold bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+                  Trained
+                </span>
               </h3>
               <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1">
-                Gemini clinical query bot
+                Trained on website data & cabinet
               </p>
             </div>
           </button>
